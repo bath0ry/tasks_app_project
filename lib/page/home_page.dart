@@ -15,8 +15,7 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter: Primeiros Passos'),
-        leading: Icon(Icons.add_task),
+        title: const Text('Flutter Task App'),
       ),
       body: AnimatedOpacity(
         opacity: opacidade ? 1.0 : 0.0,
@@ -27,15 +26,15 @@ class _InitialScreenState extends State<InitialScreen> {
             children: const [
               Padding(
                 padding: EdgeInsets.only(top: 8),
-                child: Tasks('Estudar Flutter', 'assets/images/flutter.png', 3),
+                child: Tasks('Estudar Flutter', 'assets/images/flutter.png', 4),
               ),
-              Tasks('Andar de Bike', 'assets/images/bike.webp', 2),
-              Tasks('Ler 50 páginas', 'assets/images/ler.jpg', 1),
-              Tasks('Meditar', 'assets/images/meditar.jpeg', 4),
+              Tasks('Andar de Bike', 'assets/images/bike.webp', 3),
+              Tasks('Ler 50 páginas', 'assets/images/ler.jpg', 2),
+              Tasks('Meditar', 'assets/images/meditar.jpeg', 5),
               Tasks(
                 'Jogar',
                 'assets/images/jogar.jpg',
-                0,
+                1,
               ),
               SizedBox(
                 height: 100,

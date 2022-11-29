@@ -18,9 +18,10 @@ class _MyAppState extends State<MyApp> {
   bool opacidade = true;
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: InitialScreen(),
     );

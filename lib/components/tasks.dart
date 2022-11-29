@@ -1,4 +1,3 @@
-
 import 'package:alura_flutter_curso_1/components/difficulty.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,19 @@ class _TasksState extends State<Tasks> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: Colors.blue,
+                color: (level / (widget.dificuldade * 10) > 6)
+                    ? Colors.black
+                    : (level / (widget.dificuldade * 10) > 5)
+                        ? Colors.purple[400]
+                        : (level / (widget.dificuldade * 10) > 4)
+                            ? Colors.red
+                            : (level / (widget.dificuldade * 10) > 3)
+                                ? Colors.amber[800]
+                                : (level / (widget.dificuldade * 10) > 2)
+                                    ? Colors.yellow[600]
+                                    : (level / (widget.dificuldade * 10) > 1)
+                                        ? Colors.green
+                                        : Colors.blue,
               ),
               height: 140,
             ),
@@ -117,7 +128,7 @@ class _TasksState extends State<Tasks> {
                         width: 200,
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: widget.dificuldade > 0
+                          value: widget.dificuldade >= 0
                               ? ((level / widget.dificuldade) / 10)
                               : 1,
                         ),
@@ -126,7 +137,7 @@ class _TasksState extends State<Tasks> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        'Nivel: $level',
+                        'level: $level',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
