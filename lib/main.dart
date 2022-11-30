@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: InitialScreen(),
+      home: SafeArea(child: InitialScreen()),
     );
   }
 }

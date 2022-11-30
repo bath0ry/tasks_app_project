@@ -10,48 +10,44 @@ class InitialScreen extends StatefulWidget {
 
 class _InitialScreenState extends State<InitialScreen> {
   @override
-  bool opacidade = true;
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Task App'),
-      ),
-      body: AnimatedOpacity(
-        opacity: opacidade ? 1.0 : 0.0,
-        duration: const Duration(milliseconds: 500),
-        child: Container(
-          color: Color.fromARGB(255, 208, 221, 237),
-          child: ListView(
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(top: 8),
-                child:
-                    Tasks('Estudar Flutter', 'assets/images/programmer.jpg', 4),
-              ),
-              Tasks('Fazer Compras', 'assets/images/skate.jpg', 3),
-              Tasks('Ler 50 páginas', 'assets/images/ler.jpg', 2),
-              Tasks('Meditar', 'assets/images/meditar.jpeg', 5),
-              Tasks(
-                'Jogar',
-                'assets/images/jogar.jpg',
-                1,
-              ),
-              SizedBox(
-                height: 100,
-              ),
-            ],
-          ),
+        toolbarHeight: 80,
+        centerTitle: true,
+        title: Text(
+          'Task App',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(30),
+            child: Icon(Icons.search),
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            opacidade = !opacidade;
-          });
-        },
-        backgroundColor: Colors.blue[100],
-        child: const Icon(Icons.remove_red_eye),
+      body: Container(
+        color: Color.fromARGB(255, 208, 221, 237),
+        child: ListView(
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(top: 8),
+              child:
+                  Tasks('Estudar Flutter', 'assets/images/programmer.jpg', 4),
+            ),
+            Tasks('Andar de Skate', 'assets/images/skateboarding.jpg', 3),
+            Tasks('Cozinhar', 'assets/images/cook.jpg', 2),
+            Tasks('Correr', 'assets/images/correr.jpg', 5),
+            Tasks(
+              'Jogar',
+              'assets/images/controle.jpg',
+              1,
+            ),
+            SizedBox(
+              height: 100,
+            ),
+          ],
+        ),
       ),
     );
   }

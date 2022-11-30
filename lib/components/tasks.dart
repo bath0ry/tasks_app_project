@@ -107,7 +107,7 @@ class _TasksState extends State<Tasks> {
                         width: 200,
                         height: 6,
                         child: LinearProgressIndicator(
-                          color: Color.fromARGB(255, 46, 182, 223),
+                          color: Colors.white,
                           value: widget.dificuldade >= 0
                               ? ((level / widget.dificuldade) / 10)
                               : 1,
