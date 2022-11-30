@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:alura_flutter_curso_1/components/difficulty.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,9 @@ class _TasksState extends State<Tasks> {
 
   void levelUp() {
     setState(() {
-      level++;
+      if (level <= widget.dificuldade * 10) {
+        level++;
+      }
     });
   }
 
@@ -31,21 +35,8 @@ class _TasksState extends State<Tasks> {
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-                color: (level / (widget.dificuldade * 10) > 6)
-                    ? Colors.black
-                    : (level / (widget.dificuldade * 10) > 5)
-                        ? Colors.purple[400]
-                        : (level / (widget.dificuldade * 10) > 4)
-                            ? Colors.red
-                            : (level / (widget.dificuldade * 10) > 3)
-                                ? Colors.amber[800]
-                                : (level / (widget.dificuldade * 10) > 2)
-                                    ? Colors.yellow[600]
-                                    : (level / (widget.dificuldade * 10) > 1)
-                                        ? Colors.green
-                                        : Colors.blue,
-              ),
+                  borderRadius: BorderRadius.circular(4),
+                  color: Color.fromARGB(255, 11, 6, 92)),
               height: 140,
             ),
             Column(
@@ -54,7 +45,7 @@ class _TasksState extends State<Tasks> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 135, 115, 226),
                   ),
                   height: 100,
                   child: Row(
@@ -86,7 +77,9 @@ class _TasksState extends State<Tasks> {
                               widget.nome,
                               style: const TextStyle(
                                   fontSize: 24,
-                                  overflow: TextOverflow.ellipsis),
+                                  overflow: TextOverflow.ellipsis,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
                             ),
                           ),
                           Difficulty(widget.dificuldade),
@@ -94,26 +87,12 @@ class _TasksState extends State<Tasks> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          height: 52,
-                          width: 52,
-                          child: ElevatedButton(
-                            onPressed: levelUp,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: const [
-                                Icon(Icons.arrow_drop_up),
-                                Text(
-                                  'UP',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
+                          padding: const EdgeInsets.all(16.0),
+                          child: IconButton(
+                              onPressed: () {
+                                levelUp();
+                              },
+                              icon: Icon(Icons.arrow_upward)))
                     ],
                   ),
                 ),
@@ -126,8 +105,9 @@ class _TasksState extends State<Tasks> {
                       ),
                       child: Container(
                         width: 200,
+                        height: 6,
                         child: LinearProgressIndicator(
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 46, 182, 223),
                           value: widget.dificuldade >= 0
                               ? ((level / widget.dificuldade) / 10)
                               : 1,
@@ -137,8 +117,12 @@ class _TasksState extends State<Tasks> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        'level: $level',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        'Maestria: $level',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FontStyle.italic),
                       ),
                     ),
                   ],
