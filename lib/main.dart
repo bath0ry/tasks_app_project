@@ -1,3 +1,4 @@
+import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:alura_flutter_curso_1/page/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
-  bool opacidade = true;
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: SafeArea(child: InitialScreen()),
+      home: SafeArea(child: FormPage()),
     );
   }
 }

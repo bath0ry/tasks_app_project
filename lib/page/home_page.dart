@@ -1,14 +1,14 @@
-import 'package:alura_flutter_curso_1/components/tasks.dart';
+import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
 import 'package:flutter/material.dart';
 
-class InitialScreen extends StatefulWidget {
-  const InitialScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<InitialScreen> createState() => _InitialScreenState();
+  State<HomePage> createState() => _HomePage();
 }
 
-class _InitialScreenState extends State<InitialScreen> {
+class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +35,8 @@ class _InitialScreenState extends State<InitialScreen> {
               child:
                   Tasks('Estudar Flutter', 'assets/images/programmer.jpg', 4),
             ),
-            Tasks('Andar de Skate', 'assets/images/skateboarding.jpg', 3),
-            Tasks('Cozinhar', 'assets/images/cook.jpg', 2),
+            Tasks('Andar de Skate', 'assets/images/skateboarding.jpg', 4),
+            Tasks('Cozinhar', 'assets/images/cook.jpg', 3),
             Tasks('Correr', 'assets/images/correr.jpg', 5),
             Tasks(
               'Jogar',

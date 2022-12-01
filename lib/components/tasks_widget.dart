@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:alura_flutter_curso_1/components/difficulty.dart';
+import 'package:alura_flutter_curso_1/components/difficulty_widget.dart';
 import 'package:flutter/material.dart';
 
 class Tasks extends StatefulWidget {
