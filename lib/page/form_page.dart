@@ -10,26 +10,23 @@ class FormPage extends StatefulWidget {
 }
 
 class _FormPageState extends State<FormPage> {
+  TextEditingController controllerName = TextEditingController();
+  TextEditingController controllerDifficulty = TextEditingController();
+  TextEditingController controllerImage = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text(
-                'New Task',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-              ),
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.arrow_back),
+                ),
+              ],
+            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 20),
@@ -42,58 +39,83 @@ class _FormPageState extends State<FormPage> {
                   width: 360,
                   height: 650,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 30),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Color.fromARGB(255, 223, 222, 222),
-                              border: Border.fromBorderSide(BorderSide(
-                                  width: 3,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromARGB(255, 128, 180, 223)))),
-                          width: 280,
-                          height: 50,
-                          child: TextField(
-                            maxLines: 1,
-                            decoration: InputDecoration(),
-                          ),
+                        padding: const EdgeInsets.all(30),
+                        child: TextFormField(
+                          onChanged: (text) {
+                            setState(() {});
+                          },
+                          controller: controllerName,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Task Name',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20))),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 80),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Color.fromARGB(255, 223, 222, 222),
-                              border: Border.fromBorderSide(BorderSide(
-                                  width: 3,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromARGB(255, 128, 180, 223)))),
-                          width: 280,
-                          height: 50,
-                          child: TextField(
-                            maxLines: 1,
-                            decoration: InputDecoration(),
-                          ),
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          maxLength: 1,
+                          keyboardType: TextInputType.number,
+                          onChanged: (text) {
+                            setState(() {});
+                          },
+                          controller: controllerDifficulty,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Task Difficulty',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20))),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 80),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Color.fromARGB(255, 223, 222, 222),
-                              border: Border.fromBorderSide(BorderSide(
-                                  width: 3,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromARGB(255, 4, 83, 148)))),
-                          width: 280,
-                          height: 50,
-                          child: TextFormField(
-                            maxLines: 1,
-                            decoration: InputDecoration(),
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          onChanged: (text) {
+                            setState(() {});
+                          },
+                          controller: controllerImage,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Task Image',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: BorderSide(
+                                      width: 20,
+                                      color: Colors.black,
+                                      style: BorderStyle.solid))),
+                        ),
+                      ),
+                      Container(
+                        height: 100,
+                        width: 72,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            border: Border.all(
+                                width: 2,
+                                color: Color.fromARGB(255, 1, 42, 77))),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            controllerImage.text,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset('assets/images/noimage.png');
+                            },
                           ),
                         ),
                       ),
