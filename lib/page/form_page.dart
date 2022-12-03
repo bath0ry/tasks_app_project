@@ -150,7 +150,6 @@ class _FormPageState extends State<FormPage> {
                                             Text('Nova Tarefa Adicionada')));
                               }
                             },
-                            // ignore: sort_child_properties_last
                             child: const Text(
                               'Adicionar',
                               style: TextStyle(color: Colors.black),
