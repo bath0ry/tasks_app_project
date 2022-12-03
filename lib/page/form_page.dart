@@ -143,7 +143,12 @@ class _FormPageState extends State<FormPage> {
                         ),
                         TextButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {}
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content:
+                                            Text('Nova Tarefa Adicionada')));
+                              }
                             },
                             // ignore: sort_child_properties_last
                             child: const Text(
