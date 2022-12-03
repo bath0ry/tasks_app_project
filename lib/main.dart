@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: SafeArea(child: FormPage()),
+      home: const SafeArea(child: FormPage()),
     );
   }
 }

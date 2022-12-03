@@ -15,19 +15,19 @@ class _HomePage extends State<HomePage> {
       appBar: AppBar(
         toolbarHeight: 80,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Task App',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(30),
+            padding: EdgeInsets.all(30),
             child: Icon(Icons.search),
           )
         ],
       ),
       body: Container(
-        color: Color.fromARGB(255, 208, 221, 237),
+        color: const Color.fromARGB(255, 208, 221, 237),
         child: ListView(
           children: const [
             Padding(

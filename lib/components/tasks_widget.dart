@@ -70,7 +70,7 @@ class _TasksState extends State<Tasks> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 200,
                           child: Text(
                             widget.nome,
@@ -91,7 +91,7 @@ class _TasksState extends State<Tasks> {
                             onPressed: () {
                               levelUp();
                             },
-                            icon: Icon(Icons.arrow_upward)))
+                            icon: const Icon(Icons.arrow_upward)))
                   ],
                 ),
               ),
@@ -117,7 +117,7 @@ class _TasksState extends State<Tasks> {
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
                       'Maestria: $level',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
