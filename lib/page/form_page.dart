@@ -1,6 +1,7 @@
+import 'package:alura_flutter_curso_1/components/arrow_back_form_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import '../components/add_button_form_widget.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -16,15 +17,13 @@ class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 186, 218, 245),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Row(
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_back),
-                ),
+                ArrowBackFormWidget(),
               ],
             ),
             Center(
@@ -81,6 +80,7 @@ class _FormPageState extends State<FormPage> {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: TextFormField(
+                          keyboardType: TextInputType.url,
                           onChanged: (text) {
                             setState(() {});
                           },
@@ -90,7 +90,7 @@ class _FormPageState extends State<FormPage> {
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
-                              hintText: 'Task Image',
+                              hintText: 'Task Image URL',
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                   borderSide: BorderSide(
@@ -119,15 +119,7 @@ class _FormPageState extends State<FormPage> {
                           ),
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Adicionar',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color.fromARGB(255, 128, 180, 223))))
+                      AddButtonFormPageWidget()
                     ],
                   ),
                 ),
