@@ -1,3 +1,4 @@
+import 'package:alura_flutter_curso_1/page/home_page.dart';
 import 'package:flutter/material.dart';
 
 class ArrowBackFormWidget extends StatelessWidget {
@@ -8,7 +9,9 @@ class ArrowBackFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
       icon: const Icon(Icons.arrow_back),
     );
   }

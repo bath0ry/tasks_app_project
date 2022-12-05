@@ -1,4 +1,5 @@
 import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
+import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _HomePage extends State<HomePage> {
       body: Container(
         color: const Color.fromARGB(255, 208, 221, 237),
         child: ListView(
-          children: const [
+          children: [
             Padding(
               padding: EdgeInsets.only(top: 8),
               child:
@@ -43,9 +44,20 @@ class _HomePage extends State<HomePage> {
               'assets/images/controle.jpg',
               1,
             ),
-            SizedBox(
-              height: 100,
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => FormPage()));
+                      },
+                      child: Icon(Icons.add)),
+                ),
+              ],
+            )
           ],
         ),
       ),
