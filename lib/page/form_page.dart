@@ -1,8 +1,11 @@
 import 'package:alura_flutter_curso_1/components/arrow_back_form_widget.dart';
+import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:flutter/material.dart';
 
 class FormPage extends StatefulWidget {
-  const FormPage({super.key});
+  const FormPage({super.key, required this.taskContext});
+
+  final BuildContext taskContext;
 
   @override
   State<FormPage> createState() => _FormPageState();
@@ -147,6 +150,10 @@ class _FormPageState extends State<FormPage> {
                           TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
+                                  TaskInherited.of(widget.taskContext).newTask(
+                                      controllerName.text,
+                                      controllerImage.text,
+                                      int.parse(controllerDifficulty.text));
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                           content:

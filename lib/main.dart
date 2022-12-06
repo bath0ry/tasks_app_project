@@ -1,3 +1,4 @@
+import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:alura_flutter_curso_1/page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: const SafeArea(child: HomePage()),
+      home: SafeArea(
+          child: TaskInherited(
+        child: HomePage(),
+      )),
     );
   }
 }

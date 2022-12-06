@@ -1,4 +1,5 @@
 import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
+import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:flutter/material.dart';
 
@@ -30,37 +31,18 @@ class _HomePage extends State<HomePage> {
       body: Container(
         color: const Color.fromARGB(255, 208, 221, 237),
         child: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 8),
-              child:
-                  Tasks('Estudar Flutter', 'assets/images/programmer.jpg', 4),
-            ),
-            Tasks('Andar de Skate', 'assets/images/skateboarding.jpg', 4),
-            Tasks('Cozinhar', 'assets/images/cook.jpg', 3),
-            Tasks('Correr', 'assets/images/correr.jpg', 5),
-            Tasks(
-              'Jogar',
-              'assets/images/controle.jpg',
-              1,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FloatingActionButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => FormPage()));
-                      },
-                      child: Icon(Icons.add)),
-                ),
-              ],
-            )
-          ],
+          children: TaskInherited.of(context).taskList,
+          padding: EdgeInsets.only(top: 10, bottom: 80),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext contextNew) => FormPage(
+                      taskContext: context,
+                    )));
+          },
+          child: Icon(Icons.add)),
     );
   }
 }
