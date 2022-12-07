@@ -16,6 +16,21 @@ class _FormPageState extends State<FormPage> {
   TextEditingController controllerDifficulty = TextEditingController();
   TextEditingController controllerImage = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool valueValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  bool difficultyValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      if (int.parse(value) > 5 && int.parse(value) < 1) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +66,7 @@ class _FormPageState extends State<FormPage> {
                             padding: const EdgeInsets.all(30),
                             child: TextFormField(
                               validator: (String? value) {
-                                if (value != null && value.isEmpty) {
+                                if (valueValidator(value)) {
                                   return 'Não há informações suficientes, insira um valor válido';
                                 }
                                 return null;
@@ -73,10 +88,8 @@ class _FormPageState extends State<FormPage> {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: TextFormField(
-                              validator: (value) {
-                                if (value!.isEmpty ||
-                                    int.parse(value) > 5 ||
-                                    int.parse(value) < 1) {
+                              validator: (String? value) {
+                                if (difficultyValidator(value)) {
                                   return 'Valor menor que 1 ou maior que 5 são inválidos';
                                 }
                                 return null;
@@ -101,7 +114,7 @@ class _FormPageState extends State<FormPage> {
                             padding: const EdgeInsets.all(10),
                             child: TextFormField(
                               validator: (String? value) {
-                                if (value!.isEmpty) {
+                                if (valueValidator(value)) {
                                   return 'Não há informações suficientes, insira um valor válido';
                                 }
                                 return null;

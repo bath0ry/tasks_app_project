@@ -11,22 +11,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  int nivelUser = 1;
+  void updateLevel() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
-        centerTitle: true,
-        title: const Text(
-          'Task App',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        toolbarHeight: 90,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Text(
+                    'Tasks',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+                IconButton(onPressed: () {}, icon: Icon(Icons.refresh))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 8,
+                  ),
+                  child: Container(
+                    height: 10,
+                    width: 200,
+                    child: LinearProgressIndicator(
+                      color: Colors.white,
+                      value: 1,
+                    ),
+                  ),
+                ),
+                Text('Level: $nivelUser'),
+              ],
+            ),
+          ],
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: Icon(Icons.search),
-          )
-        ],
       ),
       body: Container(
         color: const Color.fromARGB(255, 208, 221, 237),
