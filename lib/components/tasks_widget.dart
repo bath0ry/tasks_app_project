@@ -19,8 +19,9 @@ class _TasksState extends State<Tasks> {
   bool assetOrNetwork() {
     if (widget.foto.contains('http')) {
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 
   void levelUp() {
@@ -98,16 +99,13 @@ class _TasksState extends State<Tasks> {
                           ),
                         ),
                         Difficulty(widget.dificuldade),
-                        // vai ser um novo componente.
                       ],
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: IconButton(
-                            onPressed: () {
-                              levelUp();
-                            },
-                            icon: const Icon(Icons.arrow_upward)))
+                    IconButton(
+                        onPressed: () {
+                          levelUp();
+                        },
+                        icon: const Icon(Icons.arrow_upward))
                   ],
                 ),
               ),
