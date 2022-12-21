@@ -9,9 +9,11 @@ class Tasks extends StatefulWidget {
   final String nome;
   final String foto;
   final int dificuldade;
+  int level;
 
-  Tasks(this.nome, this.foto, this.dificuldade, {Key? key}) : super(key: key);
-  int level = 0;
+  Tasks(this.nome, this.foto, this.dificuldade, [this.level = 0, Key? key])
+      : super(key: key);
+// para podermos salvar os dados do nível precisamos passar ele como parametro opcional. Não serve o {}
 
   @override
   State<Tasks> createState() => _TasksState();
@@ -106,6 +108,8 @@ class _TasksState extends State<Tasks> {
                     IconButton(
                         onPressed: () {
                           levelUp();
+                          TaskDao().save(Tasks(widget.nome, widget.foto,
+                              widget.dificuldade, widget.level));
                         },
                         icon: const Icon(Icons.arrow_upward)),
                     IconButton(
