@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:alura_flutter_curso_1/components/difficulty_widget.dart';
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Tasks extends StatefulWidget {
@@ -105,7 +107,32 @@ class _TasksState extends State<Tasks> {
                         onPressed: () {
                           levelUp();
                         },
-                        icon: const Icon(Icons.arrow_upward))
+                        icon: const Icon(Icons.arrow_upward)),
+                    IconButton(
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: ((context) {
+                                return AlertDialog(
+                                  title: Text('Excluir'),
+                                  content: Text('Deseja deletar essa tarefa?'),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Não')),
+                                    TextButton(
+                                        onPressed: () {
+                                          TaskDao().delete(widget.nome);
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Sim'))
+                                  ],
+                                );
+                              }));
+                        },
+                        icon: const Icon(Icons.delete)),
                   ],
                 ),
               ),

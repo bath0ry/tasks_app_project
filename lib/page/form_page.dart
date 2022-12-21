@@ -1,4 +1,6 @@
 import 'package:alura_flutter_curso_1/components/arrow_back_form_widget.dart';
+import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:flutter/material.dart';
 
@@ -163,10 +165,10 @@ class _FormPageState extends State<FormPage> {
                           TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  TaskInherited.of(widget.taskContext).newTask(
+                                  TaskDao().save(Tasks(
                                       controllerName.text,
                                       controllerImage.text,
-                                      int.parse(controllerDifficulty.text));
+                                      int.parse(controllerDifficulty.text)));
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                           content:

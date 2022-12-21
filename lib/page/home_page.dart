@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
   int nivelUser = 1;
   void updateLevel() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,11 @@ class _HomePage extends State<HomePage> {
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.refresh))
+                IconButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    icon: Icon(Icons.refresh))
               ],
             ),
             Row(
@@ -101,10 +106,16 @@ class _HomePage extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext contextNew) => FormPage(
-                      taskContext: context,
-                    )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext contextNew) => FormPage(
+                          taskContext: context,
+                        ))).then((value) => setState(
+                  () {
+                    print('reconstruindo');
+                  },
+                ));
           },
           child: Icon(Icons.add)),
     );
