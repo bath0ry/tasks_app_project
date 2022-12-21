@@ -1,4 +1,5 @@
 import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:flutter/material.dart';
@@ -56,11 +57,46 @@ class _HomePage extends State<HomePage> {
           ],
         ),
       ),
-      body: Container(
-        color: const Color.fromARGB(255, 208, 221, 237),
-        child: ListView(
-          children: TaskInherited.of(context).taskList,
-          padding: EdgeInsets.only(top: 10, bottom: 80),
+      body: Padding(
+        padding: EdgeInsets.only(top: 10, bottom: 80),
+        child: FutureBuilder<List<Tasks>>(
+          builder: (context, snapshot) {
+            List<Tasks>? items = snapshot.data;
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+
+              case ConnectionState.waiting:
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+
+              case ConnectionState.active:
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+
+              case ConnectionState.done:
+                if (items != null && snapshot.hasData) {
+                  if (items.isNotEmpty) {
+                    return ListView.builder(
+                      itemBuilder: ((context, index) {
+                        final Tasks tarefa = items[index];
+                        return tarefa;
+                      }),
+                      itemCount: items.length,
+                    );
+                  }
+                  return Center(
+                    child: Text('Ainda não há tarefas'),
+                  );
+                }
+                return Text('Erro ao pegar dados');
+            }
+          },
+          future: TaskDao().findAll(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
