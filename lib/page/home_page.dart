@@ -1,8 +1,6 @@
 import 'package:alura_flutter_curso_1/components/tasks_widget.dart';
 import 'package:alura_flutter_curso_1/data/task_dao.dart';
 
-import 'package:alura_flutter_curso_1/data/task_inherited.dart';
-
 import 'package:alura_flutter_curso_1/page/form_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,8 +26,8 @@ class _HomePage extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
+                const Padding(
+                  padding: EdgeInsets.only(left: 30),
                   child: Text(
                     'Tasks',
                     style: TextStyle(fontSize: 25),
@@ -45,11 +43,11 @@ class _HomePage extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     left: 8,
                   ),
-                  child: Container(
+                  child: SizedBox(
                     height: 10,
                     width: 200,
                     child: LinearProgressIndicator(
@@ -65,23 +63,23 @@ class _HomePage extends State<HomePage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 10, bottom: 80),
+        padding: const EdgeInsets.only(top: 10, bottom: 80),
         child: FutureBuilder<List<Tasks>>(
           builder: (context, snapshot) {
             List<Tasks>? items = snapshot.data;
             switch (snapshot.connectionState) {
               case ConnectionState.none:
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
 
               case ConnectionState.waiting:
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
 
               case ConnectionState.active:
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
 
@@ -96,11 +94,11 @@ class _HomePage extends State<HomePage> {
                       itemCount: items.length,
                     );
                   }
-                  return Center(
+                  return const Center(
                     child: Text('Ainda não há tarefas'),
                   );
                 }
-                return Text('Erro ao pegar dados');
+                return const Text('Erro ao pegar dados');
             }
           },
           future: TaskDao().findAll(),
@@ -114,12 +112,10 @@ class _HomePage extends State<HomePage> {
                     builder: (BuildContext contextNew) => FormPage(
                           taskContext: context,
                         ))).then((value) => setState(
-                  () {
-                    print('reconstruindo');
-                  },
+                  () {},
                 ));
           },
-          child: Icon(Icons.add)),
+          child: const Icon(Icons.add)),
     );
   }
 }

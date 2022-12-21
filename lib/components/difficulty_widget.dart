@@ -7,36 +7,34 @@ class Difficulty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Icon(Icons.star,
-              size: 15,
-              color: (dificulty >= 1)
-                  ? Color.fromARGB(255, 229, 243, 33)
-                  : Colors.blue[100]),
-          Icon(Icons.star,
-              size: 15,
-              color: (dificulty >= 2)
-                  ? Color.fromARGB(255, 229, 243, 33)
-                  : Colors.blue[100]),
-          Icon(Icons.star,
-              size: 15,
-              color: (dificulty >= 3)
-                  ? Color.fromARGB(255, 229, 243, 33)
-                  : Colors.blue[100]),
-          Icon(Icons.star,
-              size: 15,
-              color: (dificulty >= 4)
-                  ? Color.fromARGB(255, 229, 243, 33)
-                  : Colors.blue[100]),
-          Icon(Icons.star,
-              size: 15,
-              color: (dificulty >= 5)
-                  ? Color.fromARGB(255, 229, 243, 33)
-                  : Colors.blue[100]),
-        ],
-      ),
+    return Row(
+      children: [
+        Icon(Icons.star,
+            size: 15,
+            color: (dificulty >= 1)
+                ? const Color.fromARGB(255, 229, 243, 33)
+                : Colors.blue[100]),
+        Icon(Icons.star,
+            size: 15,
+            color: (dificulty >= 2)
+                ? const Color.fromARGB(255, 229, 243, 33)
+                : Colors.blue[100]),
+        Icon(Icons.star,
+            size: 15,
+            color: (dificulty >= 3)
+                ? const Color.fromARGB(255, 229, 243, 33)
+                : Colors.blue[100]),
+        Icon(Icons.star,
+            size: 15,
+            color: (dificulty >= 4)
+                ? const Color.fromARGB(255, 229, 243, 33)
+                : Colors.blue[100]),
+        Icon(Icons.star,
+            size: 15,
+            color: (dificulty >= 5)
+                ? const Color.fromARGB(255, 229, 243, 33)
+                : Colors.blue[100]),
+      ],
     );
   }
 }
